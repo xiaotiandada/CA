@@ -39,6 +39,14 @@ export const Nav30DataSource = {
         name: 'item2',
         className: 'header3-item',
         children: {
+          href: '/shop',
+          children: [{ children: <p>商城</p>, name: 'text' }],
+        },
+      },
+      {
+        name: 'item3',
+        className: 'header3-item',
+        children: {
           href: '#',
           children: [{ children: <p>帮助中心</p>, name: 'text' }],
         },
