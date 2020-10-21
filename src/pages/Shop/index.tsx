@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import { Link } from "react-router-dom";
 import styled from 'styled-components'
-import { Skeleton, Switch, Card, Avatar } from 'antd';
-import { DownloadOutlined, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
+import { DownloadOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons';
 
 
 import Header from "../../components/Header";
@@ -17,7 +16,7 @@ const Shop = () => {
             <StyledCardWrapper>
                 {
                     list.map((i, idx) => (
-                        <Card title="Default Card" style={{ overflow: 'auto' }} key={idx} extra={<a href="#">View</a>} actions={[
+                        <Card title="Default Card" style={{ overflow: 'auto' }} key={idx} extra={<a href="/">View</a>} actions={[
                             <DownloadOutlined key="download" />,
                             <EditOutlined key="edit" />,
                             <EllipsisOutlined key="ellipsis" />,

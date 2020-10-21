@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
         <StyledHeader>
-            <a href="/">Github</a>
+            <a href="https://github.com/xiaotiandada" target="_blank" rel="noopener noreferrer">Github</a>
         </StyledHeader>
     )
 }
