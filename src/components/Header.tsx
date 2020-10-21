@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <StyledHeader>
-            <span>💖</span>
+            <span role="img" aria-label="logo">💖</span>
             <nav>
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
                 <Link to="/shop">Shop</Link>
-                <a href="/">About</a>
+                <a href="https://github.com/xiaotiandada" target="_blank" rel="noopener noreferrer">About</a>
             </nav>
         </StyledHeader>
     )
