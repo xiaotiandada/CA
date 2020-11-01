@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { CodeOutlined, CopyOutlined } from '@ant-design/icons';
-import { Modal, Button, Space, message } from 'antd';
+import { Modal, Button, Space, message, Tag } from 'antd';
 import { shopList } from "../../api/api";
 import { requestInterface } from "../../type";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -44,6 +45,9 @@ const Shop = () => {
                                     <span>{ i.title  }</span>
                                     <a href={ i.src } target="_blannk" rel="noopener noreferrer">View</a>
                                 </StyledCardInfo>
+                                <StyledCardItem>
+                                    <Tag color="blue">Gsap</Tag>
+                                </StyledCardItem>
                                 <StyledCardBtn>
                                     <CodeOutlined style={{ cursor: 'pointer' }} onClick={ () => { setNowIdx(idx); setVisible(true) } } />
                                 </StyledCardBtn>
@@ -73,7 +77,7 @@ const Shop = () => {
 }
 
 const StyledWrapper = styled.section`
-    background-color: #f1f1f1;
+    background-color: #f1f4f8;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -89,9 +93,10 @@ const StyledTitle = styled.section`
     margin: 0 auto;
     padding: 10px 20px;
     .title {
-        font-size: 22px;
-        color: #333;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 500;
+        color: #424242;
+}
     }
     .more {
         font-size: 16px;
@@ -131,9 +136,13 @@ const StyledCard = styled.section`
     position: relative;
     background: #fff;
     border-radius: 2px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(79,125,183,.08);
+    transition: all .3s;
     display: flex;
     flex-direction: column;
+    &:hover {
+        box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
+    }
 `
 
 const StyledCardInnerHtml = styled.div`
@@ -151,6 +160,12 @@ const StyledCardInfo = styled.section`
     a {
         font-size: 16px;
     }
+`
+const StyledCardItem = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 10px;
 `
 const StyledCardBtn = styled.section`
     display: flex;

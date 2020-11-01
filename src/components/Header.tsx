@@ -7,8 +7,8 @@ const Header = () => {
         <StyledHeader>
             <span role="img" aria-label="logo">💖</span>
             <nav>
-                <Link to="/">Home</Link>
-                <Link to="/shop">Shop</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/">Shop</Link>
                 <a href="https://github.com/xiaotiandada" target="_blank" rel="noopener noreferrer">About</a>
             </nav>
         </StyledHeader>
