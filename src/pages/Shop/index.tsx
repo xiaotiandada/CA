@@ -9,6 +9,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import CarouselComponent from "../../components/Carousel";
 
 const Shop = () => {
 
@@ -29,6 +30,16 @@ const Shop = () => {
     return (
         <StyledWrapper>
             <Header></Header>
+            <StyledCarousel>
+                <StyledCarouselBanner>
+                    <CarouselComponent></CarouselComponent>
+                </StyledCarouselBanner>
+                <StyledCarouselClassificationn>
+                    <StyledCarouselClassificationnTitle>
+                        <div>分类</div>
+                    </StyledCarouselClassificationnTitle>
+                </StyledCarouselClassificationn>
+            </StyledCarousel>
             <StyledTitle>
                 <span className="title">All Animtion</span>
                 <a href="/shop" className="more">View</a>
@@ -83,6 +94,42 @@ const StyledWrapper = styled.section`
     flex-direction: column;
 `
 
+const StyledCarousel = styled.section`
+    width: 100%;
+    max-width: 1400px;
+    height: 380px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+`
+
+const StyledCarouselBanner = styled.section`
+    box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
+    background: #fff;
+    width: 75%;
+`
+const StyledCarouselClassificationn = styled.section`
+    width: 25%;
+    margin-left: 15px;
+    box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
+    background: #fff;
+`
+const StyledCarouselClassificationnTitle = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 39px;
+    div {
+        font-weight: 600;
+    font-size: 16px;
+    color: #3c3c3c;
+    letter-spacing: 0;
+    margin-left: 10px;
+    }
+`
+
 const StyledTitle = styled.section`
     width: 100%;
     display: flex;
@@ -104,6 +151,7 @@ const StyledTitle = styled.section`
     }
 `
 
+
 const StyledCardWrapper = styled.div`
     flex: 1;
     width: 100%;
@@ -111,7 +159,7 @@ const StyledCardWrapper = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 20px;
     grid-column-gap: 20px;
     padding: 0 20px 20px;

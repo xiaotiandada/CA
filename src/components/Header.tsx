@@ -17,20 +17,20 @@ const Header = () => {
 
 const StyledHeader = styled.header`
     height: 60px;
-    background-color: #fff;
+    background-color: #3946f9;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     border-bottom: 1px solid #e5e5e5;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .05);
     span {
         font-size: 30px;
     }
     a {
-        color: #333;
+        color: rgb(255, 255, 255, 70%);
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .05);
         margin: 0 10px;
-        font-size: 18px;
+        font-size: 16px;
     }
 `
 
