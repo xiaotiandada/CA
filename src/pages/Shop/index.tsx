@@ -74,7 +74,7 @@ const Shop = () => {
                                 {
                                     ListItem.map(i => (
                                         <div className="list-item">
-                                            <img src={ i.logo } alt="code" aria-label="code" />
+                                            <img src={i.logo} alt="code" aria-label="code" />
                                         </div>
                                     ))
                                 }
@@ -93,7 +93,11 @@ const Shop = () => {
                         {
                             list.map((i: any, idx: number) => (
                                 <StyledCard key={idx}>
-                                    <StyledCardInnerHtml dangerouslySetInnerHTML={{ __html: i.iframe }}></StyledCardInnerHtml>
+                                    <StyledCardCover>
+                                        {
+                                            i.cover ? <img src={i.cover} alt="cover" /> : ''
+                                        }
+                                    </StyledCardCover>
                                     <div>
                                         <StyledCardInfo>
                                             <span>{i.title}</span>
@@ -122,7 +126,11 @@ const Shop = () => {
                         {
                             list.map((i: any, idx: number) => (
                                 <StyledCard key={idx}>
-                                    <StyledCardInnerHtml dangerouslySetInnerHTML={{ __html: i.iframe }}></StyledCardInnerHtml>
+                                    <StyledCardCover>
+                                        {
+                                            i.cover ? <img src={i.cover} alt="cover" /> : ''
+                                        }
+                                    </StyledCardCover>
                                     <div>
                                         <StyledCardInfo>
                                             <span>{i.title}</span>
@@ -307,9 +315,18 @@ const StyledCard = styled.section`
         box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
     }
 `
-
 const StyledCardInnerHtml = styled.div`
     flex: 1;
+`
+const StyledCardCover = styled.div`
+    height: 240px;
+    padding: 10px;
+    box-sizing: border-box;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 `
 const StyledCardInfo = styled.section`
     display: flex;
