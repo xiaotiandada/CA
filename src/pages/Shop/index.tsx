@@ -4,27 +4,54 @@ import { CodeOutlined, CopyOutlined } from '@ant-design/icons';
 import { Modal, Button, Space, message, Tag } from 'antd';
 import { shopList } from "../../api/api";
 import { requestInterface } from "../../type";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CarouselComponent from "../../components/Carousel";
 
+import AllAnimation from '../../config/animation.json'
+
 const Shop = () => {
 
-    const [ list, setList ]: any = useState([])
-    const [ visible, setVisible ] = useState(false)
-    const [ nowIdx, setNowIdx ] = useState(0)
+    const [list, setList]: any = useState([])
+    const [visible, setVisible] = useState(false)
+    const [nowIdx, setNowIdx] = useState(0)
+
+    const ListItem = [
+        {
+            logo: "https://cn.vuejs.org/images/logo.png"
+        },
+        {
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+        },
+        {
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"
+        },
+        {
+            logo: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/logo-man.svg"
+        },
+        {
+            logo: "https://github.com/teambit.png?s=20"
+        },
+        {
+            logo: "https://miro.medium.com/max/720/1*LjR0UrFB2a__5h1DWqzstA.png"
+        }
+    ]
+
+    // useEffect(() => {
+    //     const getList = async () => {
+    //         const result: requestInterface = await shopList()
+    //         if (result.code === 0) {
+    //             setList(result.data.list)
+    //         }
+    //     }
+    //     getList()
+    // }, []);
 
     useEffect(() => {
-        const getList = async () => {
-            const result: requestInterface = await shopList()
-            if (result.code === 0) {
-                setList(result.data.list)
-            }
-        }
-        getList()
+        setList(AllAnimation)
     }, []);
 
     return (
@@ -35,47 +62,92 @@ const Shop = () => {
                     <CarouselComponent></CarouselComponent>
                 </StyledCarouselBanner>
                 <StyledCarouselClassificationn>
-                    <StyledCarouselClassificationnTitle>
-                        <div>分类</div>
-                    </StyledCarouselClassificationnTitle>
+                    <StyledCarouselAD>
+                        <img src="https://cdn.uigreat.com/dcc6bba0-b457-4e11-b69c-821fbbfe1da5.jpg" alt="AD" aria-label="AD" />
+                    </StyledCarouselAD>
+                    <StyledClass>
+                        <StyledClassHead>
+                            <span className="title">分类</span>
+                        </StyledClassHead>
+                        <StyledClassContent>
+                            <div className="list">
+                                {
+                                    ListItem.map(i => (
+                                        <div className="list-item">
+                                            <img src={ i.logo } alt="code" aria-label="code" />
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </StyledClassContent>
+                    </StyledClass>
                 </StyledCarouselClassificationn>
             </StyledCarousel>
             <StyledTitle>
-                <span className="title">All Animtion</span>
+                <span className="title">最新动画</span>
                 <a href="/shop" className="more">View</a>
             </StyledTitle>
             {
                 list?.length > 0 ?
-                <StyledCardWrapper>
-                {
-                    list.map((i: any, idx: number) => (
-                        <StyledCard key={ idx }>
-                            <StyledCardInnerHtml dangerouslySetInnerHTML={ { __html: i.iframe } }></StyledCardInnerHtml>
-                            <div>
-                                <StyledCardInfo>
-                                    <span>{ i.title  }</span>
-                                    <a href={ i.src } target="_blannk" rel="noopener noreferrer">View</a>
-                                </StyledCardInfo>
-                                <StyledCardItem>
-                                    <Tag color="blue">Gsap</Tag>
-                                </StyledCardItem>
-                                <StyledCardBtn>
-                                    <CodeOutlined style={{ cursor: 'pointer' }} onClick={ () => { setNowIdx(idx); setVisible(true) } } />
-                                </StyledCardBtn>
-                            </div>
-                        </StyledCard>
-                    ))
-                }
-                </StyledCardWrapper> :
-                <StyledEmpty><p style={{ marginTop: 100, textAlign: 'center' }}>暂时什么也没有...</p></StyledEmpty>
+                    <StyledCardWrapper>
+                        {
+                            list.map((i: any, idx: number) => (
+                                <StyledCard key={idx}>
+                                    <StyledCardInnerHtml dangerouslySetInnerHTML={{ __html: i.iframe }}></StyledCardInnerHtml>
+                                    <div>
+                                        <StyledCardInfo>
+                                            <span>{i.title}</span>
+                                            <a href={i.src} target="_blannk" rel="noopener noreferrer">View</a>
+                                        </StyledCardInfo>
+                                        <StyledCardItem>
+                                            <Tag color="blue">Gsap</Tag>
+                                        </StyledCardItem>
+                                        <StyledCardBtn>
+                                            <CodeOutlined style={{ cursor: 'pointer' }} onClick={() => { setNowIdx(idx); setVisible(true) }} />
+                                        </StyledCardBtn>
+                                    </div>
+                                </StyledCard>
+                            ))
+                        }
+                    </StyledCardWrapper> :
+                    <StyledEmpty><p style={{ marginTop: 100, textAlign: 'center' }}>暂时什么也没有...</p></StyledEmpty>
+            }
+            <StyledTitle>
+                <span className="title">推荐动画</span>
+                <a href="/shop" className="more">View</a>
+            </StyledTitle>
+            {
+                list?.length > 0 ?
+                    <StyledCardWrapper>
+                        {
+                            list.map((i: any, idx: number) => (
+                                <StyledCard key={idx}>
+                                    <StyledCardInnerHtml dangerouslySetInnerHTML={{ __html: i.iframe }}></StyledCardInnerHtml>
+                                    <div>
+                                        <StyledCardInfo>
+                                            <span>{i.title}</span>
+                                            <a href={i.src} target="_blannk" rel="noopener noreferrer">View</a>
+                                        </StyledCardInfo>
+                                        <StyledCardItem>
+                                            <Tag color="blue">Gsap</Tag>
+                                        </StyledCardItem>
+                                        <StyledCardBtn>
+                                            <CodeOutlined style={{ cursor: 'pointer' }} onClick={() => { setNowIdx(idx); setVisible(true) }} />
+                                        </StyledCardBtn>
+                                    </div>
+                                </StyledCard>
+                            ))
+                        }
+                    </StyledCardWrapper> :
+                    <StyledEmpty><p style={{ marginTop: 100, textAlign: 'center' }}>暂时什么也没有...</p></StyledEmpty>
             }
             <Footer></Footer>
             <Modal
-                title={ list[nowIdx]?.title }
+                title={list[nowIdx]?.title}
                 visible={visible}
                 footer={null}
             >
-                <p>{ list[nowIdx]?.iframe }</p>
+                <p>{list[nowIdx]?.iframe}</p>
                 <Space>
                     <CopyToClipboard text={list[nowIdx]?.iframe} onCopy={() => message.success('copy success')}>
                         <Button icon={<CopyOutlined />}>Copy</Button>
@@ -111,22 +183,66 @@ const StyledCarouselBanner = styled.section`
 `
 const StyledCarouselClassificationn = styled.section`
     width: 25%;
-    margin-left: 15px;
+    margin-left: 18px;
+    display: flex;
+    flex-direction: column;
+`
+const StyledClass = styled.div`
+    margin-top: 18px;
     box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
     background: #fff;
+    flex: 1;
 `
-const StyledCarouselClassificationnTitle = styled.div`
-    display: flex;
+const StyledClassHead = styled.section`
+display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     height: 39px;
-    div {
+    .title {
         font-weight: 600;
-    font-size: 16px;
-    color: #3c3c3c;
-    letter-spacing: 0;
-    margin-left: 10px;
+        font-size: 16px;
+        color: #3c3c3c;
+        letter-spacing: 0;
+        margin-left: 10px;
+    }
+`
+const StyledClassContent = styled.section`
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.list-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    &:nth-of-type(3),
+    &:nth-of-type(6) {
+        border-right: none;
+    }
+    img {
+        height: 70%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+`
+const StyledCarouselAD = styled.a`
+    box-shadow: 0 14px 20px 0 rgba(234,63,255,0), 0 15px 40px 0 rgba(79,125,183,.08);
+    background: #fff;
+    height: 123px;
+    overflow: hidden;
+    display: block;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 `
 
@@ -143,7 +259,6 @@ const StyledTitle = styled.section`
         font-size: 16px;
         font-weight: 500;
         color: #424242;
-}
     }
     .more {
         font-size: 16px;

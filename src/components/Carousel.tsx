@@ -7,13 +7,8 @@ import { Carousel } from 'antd';
 
 const CarouselComponent = () => {
 
-  function onChange(a: any, b: any, c: any): void {
-    console.log(a, b, c);
-  }
-
   return (
-    // @ts-ignore
-    <Carousel afterChange={onChange} style={{ height: 380 }}>
+    <Carousel style={{ height: 380 }}>
       <StyledItem>
         <img src="https://cdn.uigreat.com/fce2139f-f8ba-47ad-bad7-964f6650abac.jpeg" alt="banner" aria-label="banner"/>
       </StyledItem>
