@@ -10,8 +10,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CarouselComponent from "../../components/Carousel";
+import CardItem from "../../components/Card";
+
 
 import AllAnimation from '../../config/animation.json'
+
 
 const Shop = () => {
 
@@ -92,25 +95,7 @@ const Shop = () => {
                     <StyledCardWrapper>
                         {
                             list.map((i: any, idx: number) => (
-                                <StyledCard key={idx}>
-                                    <StyledCardCover>
-                                        {
-                                            i.cover ? <img src={i.cover} alt="cover" /> : ''
-                                        }
-                                    </StyledCardCover>
-                                    <div>
-                                        <StyledCardInfo>
-                                            <span>{i.title}</span>
-                                            <a href={i.src} target="_blannk" rel="noopener noreferrer">View</a>
-                                        </StyledCardInfo>
-                                        <StyledCardItem>
-                                            <Tag color="blue">Gsap</Tag>
-                                        </StyledCardItem>
-                                        <StyledCardBtn>
-                                            <CodeOutlined style={{ cursor: 'pointer' }} onClick={() => { setNowIdx(idx); setVisible(true) }} />
-                                        </StyledCardBtn>
-                                    </div>
-                                </StyledCard>
+                                <CardItem key={idx} data={i}></CardItem>
                             ))
                         }
                     </StyledCardWrapper> :
@@ -125,25 +110,7 @@ const Shop = () => {
                     <StyledCardWrapper>
                         {
                             list.map((i: any, idx: number) => (
-                                <StyledCard key={idx}>
-                                    <StyledCardCover>
-                                        {
-                                            i.cover ? <img src={i.cover} alt="cover" /> : ''
-                                        }
-                                    </StyledCardCover>
-                                    <div>
-                                        <StyledCardInfo>
-                                            <span>{i.title}</span>
-                                            <a href={i.src} target="_blannk" rel="noopener noreferrer">View</a>
-                                        </StyledCardInfo>
-                                        <StyledCardItem>
-                                            <Tag color="blue">Gsap</Tag>
-                                        </StyledCardItem>
-                                        <StyledCardBtn>
-                                            <CodeOutlined style={{ cursor: 'pointer' }} onClick={() => { setNowIdx(idx); setVisible(true) }} />
-                                        </StyledCardBtn>
-                                    </div>
-                                </StyledCard>
+                                <CardItem key={idx} data={i}></CardItem>
                             ))
                         }
                     </StyledCardWrapper> :
@@ -296,7 +263,7 @@ const StyledCard = styled.section`
     border: 1px solid #f0f0f0;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
     font-variant: tabular-nums;
@@ -320,7 +287,7 @@ const StyledCardInnerHtml = styled.div`
 `
 const StyledCardCover = styled.div`
     height: 240px;
-    padding: 10px;
+    padding: 0px;
     box-sizing: border-box;
     img {
         width: 100%;
